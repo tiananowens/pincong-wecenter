@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pincong-monolith
+  labels:
+    app: pincong
+spec:
+  containers:
+    - image: pincong
+      name: pincong
+      imagePullPolicy: Never
+      ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        - name: https
+          containerPort: 443
+          protocol: TCP

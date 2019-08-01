@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: pincong-app
+  namespace: pincong
+  labels:
+    app: pincong
+    service: pincong-app
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      service: pincong-app
+  template:
+    metadata:
+      namespace: pincong
+      labels:
+        app: pincong
+        service: pincong-app
+    spec:
+      containers:
+        - name: pincong-app
+          image: pincong-app
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+            - name: https
+              containerPort: 443
+              protocol: TCP
+    
