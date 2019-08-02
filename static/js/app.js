@@ -255,6 +255,20 @@ $(document).ready(function ()
             }
         });
     }*/
+
+    /* RFC-091 展開閱讀全文 */
+    $('.mod-body.aw-feed-list .aw-item .markitup-box').each(function () {
+        var $contentDiv = $(this);
+        if($contentDiv.text().length > 1000) {
+            $contentDiv.addClass('briefly');
+            $button = $('<div class="aw-stretch-content-button-container"><button class="aw-stretch-content-button" type="button"></button></div>');
+            $button.click(function () {
+                $button.parent().removeClass('briefly');
+                $button.hide();
+            });
+            $contentDiv.append($button);
+        }
+    });
 });
 
 $(window).on('hashchange', function() {
